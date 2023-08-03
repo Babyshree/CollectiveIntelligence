@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="/eduwell-1.0.0/chatbot-openai-api/chatbot/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <title>CI-Chatbot</title>
+    <link rel="icon" href="/eduwell-1.0.0/assets/images/cilogo.png" type="image/icon type">
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-eduwell-style.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/lightbox.css">
+<!--
+
+TemplateMo 573 EduWell
+
+https://templatemo.com/tm-573-eduwell
+
+--> 
+  </head>
+
+<body>
+
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                  <nav class="main-nav">
+                      <!-- ***** Logo Start ***** -->
+                      <a href="index.html" class="logo">
+                        <img style="margin-top: -30px;" src="/eduwell-1.0.0/assets/images/CI_logonew-removebg-preview.png" alt="Logo" >
+
+                      </a>
+                      <!-- ***** Logo End ***** -->
+                      <!-- ***** Menu Start ***** -->
+                      <ul class="nav">
+                          <li class="scroll-to-section"><a href="index.html" class="active">Home</a></li>
+                        
+                          <li class="scroll-to-section"><a href="index.html ">Tools</a></li>
+                         
+                            <li><a href="about-us.html">About </a></li>
+                                  <li><a href="our-features.html">Our Features</a></li>
+                                  <li><a href="contact-us.html">Contact Us</a></li>
+                              </ul>
+                          </li>
+                          
+                      </ul>        
+                      <a class='menu-trigger'>
+                          <span>Menu</span>
+                      </a>
+                      <!-- ***** Menu End ***** -->
+                  </nav>
+              </div>
+          </div>
+      </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <div class="container" style="margin-top: 5%;height: 300px;">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 col-sm-12">
+        <div id="chat-window" style="background-color:#d5b6d4;margin-top: 25%;">
+          <div class="main-title">Chat</div>
+
+          <!-- Toggle checkbox with Sun and Moon Icon 
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="dark-mode-switch">
+            <label class="form-check-label" for="dark-mode-switch">
+              <i class="fas fa-sun"></i>
+              <i class="fas fa-moon"></i>
+            </label>
+          </div>-->
+
+
+
+
+          <div id="chat-messages"></div>
+
+
+          <!--loader-->
+          <div id="loader">
+            <div class="loader-icon">
+              <i class="fas fa-spinner fa-spin"></i>
+            </div>
+          </div>
+          <!--end-->
+          <form id="chat-form">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" id="chat-input" autocomplete="off" placeholder="Message..."
+                required />
+              <div class="input-group-append">
+                <button style="color: rgb(200, 122, 226); height: 35px;" class="btn btn-white" type="submit"><i class="fa fa-paper-plane"></i></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.3/axios.min.js"></script>
+  <script src="/eduwell-1.0.0/chatbot-openai-api/chatbot/app.js"></script>
+
+
+</body>
+
+</html>

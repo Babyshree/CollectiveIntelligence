@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <title>CI-Image Generator</title>
+    <link rel="icon" href="/eduwell-1.0.0/assets/images/cilogo.png" type="image/icon type">
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-eduwell-style.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/lightbox.css">
+<!--
+
+TemplateMo 573 EduWell
+
+https://templatemo.com/tm-573-eduwell
+
+-->
+
+
+<style>
+    body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+background-image: linear-gradient( rgba(230, 195, 245, 0), rgb(209, 179, 219));
+background-size:cover;
+background-repeat: no-repeat;
+height: fit-content;
+}
+
+h1 {
+margin-left: 5%;
+}
+
+input[type="text"] {
+font-size: 1rem;
+padding: 0.5rem;
+border: 1px solid #ccc;
+border-radius: 0.25rem;
+width: 94%;
+margin-left: 2%;
+
+}
+
+button {
+margin-top: 30px;
+font-size: 1rem;
+padding: 0.5rem 1rem;
+background-color: #007bff;
+color: #fff;
+border: none;
+border-radius: 0.25rem;
+cursor: pointer;
+margin-left: 50%;
+margin-bottom: 20px;
+}
+
+button:hover {
+background-color: #0069d9;
+}
+
+#images {
+display: flex;
+
+justify-content: center;
+}
+
+img {
+margin: 0.5rem;
+border-radius: 0.25rem;
+border: 1px solid #ccc;
+margin: 5%;
+}
+
+</style>
+  </head>
+
+<body>
+
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                  <nav class="main-nav">
+                      <!-- ***** Logo Start ***** -->
+                      <a href="index.html" class="logo">
+                        <img style="margin-top: -30px;border: none;" src="/eduwell-1.0.0/assets/images/CI_logonew-removebg-preview.png" alt="Logo" >
+
+                      </a>
+                      <!-- ***** Logo End ***** -->
+                      <!-- ***** Menu Start ***** -->
+                      <ul class="nav">
+                          <li class="scroll-to-section"><a href="/eduwell-1.0.0/index.html" class="active">Home</a></li>
+                        
+                          <li class="scroll-to-section"><a href="/eduwell-1.0.0/index.html">Tools</a></li>
+                         
+                            <li><a href="about-us.html">About </a></li>
+                                  <li><a href="our-features.html">Our Features</a></li>
+                                  <li><a href="contact-us.html">Contact Us</a></li>
+                              </ul>
+                          </li>
+                          
+                      </ul>        
+                      <a class='menu-trigger'>
+                          <span>Menu</span>
+                      </a>
+                      <!-- ***** Menu End ***** -->
+                  </nav>
+              </div>
+          </div>
+      </div>
+  </header>
+
+<div style="margin-top:15%;">
+
+  <div id="grad1">
+    <h1>OpenAI Image Generator</h1> <br>
+    <p style="text-align: center;font-size: 150%;">Enter a prompt to generate an image:</p>
+    <br>
+    <input class="shadow-lg outline-none w-full rounded-l-lg px-4 py-4 text-gray-600 border-r-2 border-gray-200" type="text" id="prompt" />
+    <button onclick="generateImage()"><b>Generate</b> </button>
+    <div id="images" style="width: 100%;height: 91%;"></div>
+  </div>
+</div>
+    <script>
+      const apiKey = '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';
+      const apiUrl = 'https://api.openai.com/v1/images/generations';
+
+      function generateImage() {
+        const prompt = document.getElementById('prompt').value;
+        if (prompt === '') {
+          alert('Please enter a prompt');
+          return;
+        }
+        const data = {
+          model: 'image-alpha-001',
+          prompt: prompt,
+          n: 3,
+          size: '512x512',
+        };
+        fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`,
+          },
+          body: JSON.stringify(data),
+        })
+          .then(response => response.json())
+          .then(data => {
+            const images = data.data.map(imageData => {
+              const image = new Image();
+              image.src = imageData.url;
+              return image;
+            });
+            const imagesDiv = document.getElementById('images');
+            imagesDiv.innerHTML = '';
+            images.forEach(image => imagesDiv.appendChild(image));
+          })
+          .catch(error => {
+            console.error('Error generating image:', error);
+          });
+      }
+    </script>
+  </body>
+  </html>
